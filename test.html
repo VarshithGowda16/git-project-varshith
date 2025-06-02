@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Ticket Machine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      margin: 0;
+      padding: 20px;
+    }
+    .machine {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #6b4f3b;
+    }
+    .coffee-options, .controls {
+      margin: 15px 0;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: #a9744f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8b5a38;
+    }
+    .ticket {
+      margin-top: 20px;
+      padding: 10px;
+      background: #eee;
+      border-left: 4px solid #a9744f;
+    }
+  </style>
+</head>
+<body>
+  <div class="machine">
+    <h2>Coffee Ticket Machine</h2>
+    <div class="coffee-options">
+      <button onclick="selectCoffee('Espresso')">Espresso - $2</button>
+      <button onclick="selectCoffee('Latte')">Latte - $3</button>
+      <button onclick="selectCoffee('Cappuccino')">Cappuccino - $3</button>
+    </div>
+    <div class="controls">
+      <label>Insert Amount: </label>
+      <input type="number" id="amountInput" placeholder="e.g. 5" />
+      <button onclick="insertAmount()">Insert</button>
+    </div>
+    <div id="ticket" class="ticket" style="display: none;"></div>
+  </div>
+</body>
+</html>
