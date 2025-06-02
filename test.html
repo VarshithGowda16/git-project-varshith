@@ -69,9 +69,10 @@
   function insertAmount() {
     const input = document.getElementById('amountInput');
     const value = parseFloat(input.value);
-    if (isNaN(value) || value <= 0) {
-      alert("Please insert a valid amount.");
-      return;
+if (!input.value.trim() || isNaN(value) || value <= 0) {
+  alert("Please insert a valid positive number.");
+  return;
+}
     }
     balance += value;
     input.value = '';
