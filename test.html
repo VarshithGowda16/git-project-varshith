@@ -106,3 +106,33 @@
     ticketDiv.style.display = 'block';
   }
 </script>
+<!-- Add these inside .controls -->
+<button onclick="clearTicket()">Clear Ticket</button>
+<button onclick="resetMachine()">Reset</button>
+<!-- Add to <script> -->
+function clearTicket() {
+  const ticketDiv = document.getElementById('ticket');
+  ticketDiv.innerHTML = '';
+  ticketDiv.style.display = 'none';
+}
+
+function resetMachine() {
+  balance = 0;
+  clearTicket();
+  alert("Machine reset. Balance cleared.");
+}
+<!-- Add after ticket div -->
+<p id="balanceDisplay" style="text-align: center; margin-top: 10px;">
+  Current Balance: $0.00
+</p>
+<!-- Update in insertAmount() and selectCoffee() -->
+function updateBalanceDisplay() {
+  document.getElementById('balanceDisplay').innerText =
+    `Current Balance: $${balance.toFixed(2)}`;
+}
+// Example:
+function insertAmount() {
+  ...
+  updateBalanceDisplay();
+}
+</html>
