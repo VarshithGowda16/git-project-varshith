@@ -63,3 +63,46 @@
   </div>
 </body>
 </html>
+<script>
+  let balance = 0;
+
+  function insertAmount() {
+    const input = document.getElementById('amountInput');
+    const value = parseFloat(input.value);
+    if (isNaN(value) || value <= 0) {
+      alert("Please insert a valid amount.");
+      return;
+    }
+    balance += value;
+    input.value = '';
+    alert(`$${value.toFixed(2)} added. Current balance: $${balance.toFixed(2)}`);
+  }
+
+  function selectCoffee(type) {
+    const prices = {
+      Espresso: 2,
+      Latte: 3,
+      Cappuccino: 3
+    };
+    const price = prices[type];
+    if (balance >= price) {
+      balance -= price;
+      generateTicket(type, price);
+    } else {
+      alert(`Insufficient balance! ${type} costs $${price}.`);
+    }
+  }
+
+  function generateTicket(type, price) {
+    const ticketDiv = document.getElementById('ticket');
+    const now = new Date();
+    ticketDiv.innerHTML = `
+      <strong>COFFEE TICKET</strong><br>
+      Type: ${type}<br>
+      Price: $${price.toFixed(2)}<br>
+      Time: ${now.toLocaleTimeString()}<br>
+      Remaining Balance: $${balance.toFixed(2)}
+    `;
+    ticketDiv.style.display = 'block';
+  }
+</script>
